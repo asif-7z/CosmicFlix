@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+
+{%block asif%}
+
+
+<form method="POST" enctype='multipart/form-data' action=".">{% csrf_token%}
+    {{edit.as_p}}
+<button id="edit" type="submit">submit</button>
+</form>
+
+
+
+
+{%endblock%}

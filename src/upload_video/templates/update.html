@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{% block asif %}
+{% if user.is_superuser%}
+<form action="." enctype='multipart/form-data' method="POST">{% csrf_token %}
+    {{Name}}
+
+    <br>
+    <h3>update series list</h3>
+    {{update.as_p}}
+    <button type="submit">update</button>
+</form>
+{%else%}
+<script type="text/javascript">window.location.href = "/";</script>
+{%endif%}
+
+{%endblock%}

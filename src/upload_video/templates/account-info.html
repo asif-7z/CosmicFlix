@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block asif %}
+<div class="infocard">
+<label>Username</label>
+<h5>{{profile}}</h5>
+<label>Date Joined</label>
+<h6 style="font-weight: 100;">{{profile.date_joined|date}}</h6>
+<label>Email address</label>
+<h5>{{profile.email}}</h5>
+<label>First name</label>
+<h5>{{profile.first_name}}</h5>
+<label>Last name</label>
+<h5>{{profile.last_name}}</h5>
+</div>
+
+<style>
+    .infocard{
+
+        height:600px;
+        color: white;
+        text-align: center;
+        border-radius: 30px;
+        background: #212121;
+       
+    }
+</style>
+{%endblock%}

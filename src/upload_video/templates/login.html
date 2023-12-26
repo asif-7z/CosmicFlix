@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block asif %}
+<br>
+<br>
+<div class="col-6 col-md-2  mb-2 mx-auto">
+  <div class="row">
+<form class="login-form" method="post">{% csrf_token %}
+    {{login.as_p}}
+    <button type="submit" class="fsubmit">Login</button>
+    <a href="/Register/">Register</a>
+  </form>
+  </div></div>
+
+{%endblock%}

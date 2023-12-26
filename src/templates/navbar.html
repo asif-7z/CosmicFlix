@@ -1,0 +1,51 @@
+{% load static%}
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'media/images/logo.png'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Introdull
+      </a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/category/movie">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/category/series/">TV Series</a>
+          </li>
+            <a class="nav-link active" aria-current="page" href="/mylist/">My list</a>
+          </li>
+          </ul>
+          <ul class="navbar-nav me-0 mb-2 mb-lg-0">
+            {%if user.is_superuser%}
+            <a href="/admin/"> <button type="button" class="btn btn-outline-primary">Admin</button></a>
+            {%endif%}
+        
+            {% if user == "AnonymousUser" %}
+            <a href="/login/"><button type="button" class="btn btn-outline-primary">login</button></a>
+            {%elif user.is_active %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{user}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="/login/">Switch Account</a></li>
+                <li><a class="dropdown-item" href="/settings/">Settings</a></li>
+                <a class="dropdown-item" href="/logout/"><button type="button" class="btn btn-outline-primary">Logout</button></a>
+              </ul>
+            </li>
+            {%else%}
+            <a href="/login/"><button type="button" class="btn btn-outline-primary">Login</button></a>
+            {%endif%}
+          </ul>
+        <form class="d-flex" role="search" action="/search/">
+          <input class="form-control me-2" type="search"  name="q" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+       
+      </div>
+    </div>
+  </nav>

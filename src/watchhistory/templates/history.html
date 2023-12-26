@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block asif %}
+<div class="row">
+{% for h in history %}
+
+{% include "home-inline.html" with i=h.video_name %}
+
+{%endfor%}
+</div>
+<form method="post" action="."  onclick="javascript:alert('Clear History')">{% csrf_token %}
+    <button class="btn btn-danger"  type="submit">Clear History</button>
+
+</form>
+
+{%endblock%}

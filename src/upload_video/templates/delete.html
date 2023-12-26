@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+{%block asif%}
+
+<h3> are sure want to delete</h3>
+<h1>{{delete.slug}}</h1>
+<form method="POST">{% csrf_token%}
+
+<button  id="dle" onclick="javascript:alert('item deleted')" type="submit">delete</button>
+</form>
+
+
+{%endblock%}

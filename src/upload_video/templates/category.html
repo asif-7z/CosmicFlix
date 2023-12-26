@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block asif%}
+<div class="bck">
+    <br>
+<div class="row">
+{% for c in category %}
+
+{% include "home-inline.html" with i=c %}
+
+{%endfor%}
+</div>
+</div>
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+{%block asif%}
+
+{% if user.is_superuser %}
+<form method="POST" enctype='multipart/form-data' action=".">{% csrf_token%}
+    {{poster}}
+{{file}}
+<div class="row">
+    <div class="col">
+        <br>
+<button type="submit">upload</button>
+</div>
+</div>
+</form>
+{%else%}
+<script type="text/javascript">
+    window.location.href = "/";
+    </script>
+{%endif%}
+
+
+{%endblock%}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block asif %}
+
+
+<div class="cent">
+<div class="card">
+    <div class="card-img">
+    </div>
+    <p class="text-title">{{user}}</p>
+    <a href="/settings/account-info/"><button class="card-btn">Account info</button></a>
+       <a href="/settings/change-password/"><button class="card-btn">Change Password</button></a>
+       <a href="/settings/delete_user/"><button class="card-btn">Delete Account</button></a>
+      
+    </div>
+</div>
+<style> 
+    .cent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+.card {
+ width: 600px;
+ height: 500px;
+ background: transparent;
+ overflow: visible;
+ box-shadow: 0 5px 20px 2px rgba(49, 92, 200, 0.8);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border-radius: 25px;
+}
+
+.card-btn{
+    border-radius: 20px;
+    border: none;
+    color:  #e65af6;
+    background-color: transparent;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow:  0 5px 20px 2px rgba(49, 92, 200, 0.5);
+    height: 50px;
+    width: 500px;
+}
+.card-btn:hover{
+    background-color: #e81aff;
+    color: white;
+}
+
+.card-img {
+    box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.5);
+ --size: 150px;
+ width: var(--size);
+ height: var(--size);
+ border-radius: 50%;
+ transform: translateY(-50%);
+ background: #42caff;
+ background: linear-gradient(to bottom, #42caff 0%, #e81aff 100%);
+ position: relative;
+ transition: all .3s ease-in-out;
+}
+
+
+/*Text*/
+.text-title {
+ text-transform: uppercase;
+ font-size: 1em;
+ color: #42caff;
+ letter-spacing: 0.05rem;
+}
+
+
+
+</style>
+
+{%endblock%}

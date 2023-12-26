@@ -1,0 +1,55 @@
+<div class="col-8 col-md-auto  mb-4 mx-auto">
+<div class="pop">
+    <div class="card" style="width: 18rem;">
+      <a href="/{{i.detail_url}}"><img class="card-img-top" src="{{i.poster.url}}" alt="Card image cap"></a>
+      <div class="pit">
+        <h3>{{i.Name}}</h3>
+        <p class="detail">{{i.detail | truncatewords:20}}</p>
+       <a href="/{{i.detail_url}}"> <button class="btn btn-outline-warning">play</button></a>
+      </div>
+
+      <!-- <div class="card-body">
+        <h5 class="card-title">{{i.Name}}</h5>
+        <a href="/{{i.detail_url}}" class="btn btn-primary">{{i.type}}</a>
+      </div> -->
+    </div>
+    </div>
+
+    </div>
+    <style>
+      .card{
+        border: none;
+      }
+      .detail{
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .pit{
+        position:absolute;
+        height: 200px;
+        width: 300px;
+        bottom: 20px;
+        left: 40px;
+        font-weight: 600;
+        color: white;
+        background-image: linear-gradient(to bottom, #6363636e,#21212194);
+        border-radius: 25px;
+        visibility:collapse;
+        text-align: center;
+      }
+      .card:hover{
+        background-color: transparent;
+        padding: 5px;
+      }
+    .card:hover > .pit
+      {
+        
+        visibility: visible;
+        
+      }
+    </style>
+
+  
+    
+    
+

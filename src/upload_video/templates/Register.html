@@ -1,0 +1,38 @@
+{% extends "base.html"%}
+{%block asif%}
+
+<br>
+<br>
+<div class="col-6 col-md-2  mb-2 mx-auto">
+  <div class="row">
+<form class="login-form" method="post">{% csrf_token%}
+  <span class="ftitle">Register</span>
+  <label for="username" class="flabel">Username</label>
+  {{Register.username}}
+  {{Register.errors.username}}
+  <label for="email" class="flabel">First Name</label>
+  {{Register.first_name}}
+  {{Register.errors.first_name}}
+  <label for="email" class="flabel">Last name</label>
+  {{Register.last_name}}
+  {{Register.errors.last_name}}
+  <label for="email" class="flabel">Email</label>
+  {{Register.email}}
+  {{Register.errors.email}}
+  <label for="password" class="flabel">Password</label>
+  {{Register.password1}}
+  {{Register.errors.password1}}
+  <label for="password" class="flabel">Confirm Password</label>
+  {{Register.password2}}
+  {{Register.errors.password2}}
+  <br>
+  <button type="submit" class="fsubmit">Register</button>
+  <a href="/login/">login</a>
+</form>
+  </div>
+</div>
+
+
+{%endblock%}
+
+ 

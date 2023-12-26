@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{%block asif%}
+<div class="row">
+<form method="post" action=".">{% csrf_token %}
+    <h1>Are you sure to delete this account</h1>
+    <h4>{{username}}</h4>
+    <button type="submit" class="btn btn-danger">delete</button>
+    <a href="/"><button type="button" class="btn btn-outline-success">No</button></a>
+
+</form>
+
+</div>
+
+{%endblock%}

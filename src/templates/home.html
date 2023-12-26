@@ -1,0 +1,109 @@
+{% extends "base.html"%}
+{% block asif%}
+
+
+{% load static %}
+
+
+</style>
+<div class="sz">
+  <div class="bck">
+    <h1 class="hd">New Release</h1>
+    <div class="pd" style="padding: 30px; padding-top: 1%; margin-right: 49%; padding-bottom: 1%;">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{cars.poster1.p}}" style="border-radius: 25px;" class="d-block w-100" alt="...">
+             </div>
+        <div class="carousel-item">
+          <img src="{{cars.poster2.p}}" style="border-radius: 25px;" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{{cars.poster3.p}}"  style="border-radius: 25px;" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    </div>
+    <div class="hel">
+      {% for h in hist %}
+      {% include "home-inline.html" with i=h.video_name %}
+      {%endfor%}
+      {% if user.is_active %}
+          {% if lst_p == "no history" %}
+            <h1>Welcome {{user.first_name}}</h1>
+          {% else %}
+            <a href="/play/{{lst_p}}"><button class="hist">Continue watching. . .</button></a>
+            <a href="/history/"><button class="hist">History</button></a>
+          {%endif%}
+      {%else%}
+          <h1>Login <br>to get full Access to Website</h1>
+      {%endif%}
+    </div>
+    </div>
+</div>
+
+<style>
+  
+  .hist{
+    border-radius: 25px;
+    border: none;
+    background-color: rgba(181, 174, 174, 0.473);
+    color: white;
+    padding: 2%;
+  }
+</style>
+
+<!-- {% load static %}
+<img  id="backg" src="{% static 'media/images/background.jpg' %}"> -->
+<!-- <p id="devil">0</p> -->
+<br>
+<div class="bck">
+  <h1 class="hd">All</h1>
+  <div class="pd" style="padding: 45px; padding-top: 1%; padding-bottom: 1%;">
+<!-- <a href="/admin/"><button>admin</button></a> -->
+
+<!-- <input type="text" id="listitem"> -->
+<!-- <p id ="usernameerror">this is not valid username</p>
+<button id="non">click</button> -->
+<!-- <div id="fn"> -->
+  <!-- <li id="item1">list1</li>
+<li id="item2">list2</li> -->
+<!-- <h1 id="titl">welcome<p>
+  to my website
+</p></h1> -->
+<!-- </div> -->
+<!-- <h1 id="asf">hello</h1> -->
+<h1>{{url.get_url}}</h1>
+
+<div class="row">
+{%for i in poster%}
+{% include "home-inline.html" with i=i %}
+
+<!-- <h1>{{i.Name}}</h1><a href="/Bleach/episodes/">
+<img src="{{i.poster.url}}"></a> -->
+{%endfor%}
+</div>
+
+<h1>{{main.get_url}}</h1>
+
+</div>
+</div>
+
+<style>
+  .hd
+  {
+    color: white;
+    margin-left: 5%;
+    
+  }
+</style>
+
+{%endblock%} 

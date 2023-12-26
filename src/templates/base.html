@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+   
+      <title>Asif</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+      <link href="{% static '/css/styles.css'%}" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+     
+      
+      
+    </head>
+  <body>
+    
+    
+  {% include "navbar.html" %}
+   
+    <div class='container-fluid'>
+     
+             {% block asif %}
+             
+             {% endblock %}
+       
+    </div>
+    <!-- <footer>
+      <p>Author: Devil<br>
+      <a href="asfdevil66@gmail.com">asfdevil66@gmail.com</a></p>
+    </footer>
+    <style>
+    footer {
+      margin-left: auto;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(14, 14, 20, 0.707);
+      color: white;
+    }
+    </style> -->
+
+    <script type="text/javascript" src="{% static '/js/file.js'%}"></script>
+    <script type="text/javascript" src="{% static '/js/class.js'%}"></script>
+
+
+    </body>
+  
+</html>

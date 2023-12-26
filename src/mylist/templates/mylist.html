@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block asif %}
+
+<div class="row">
+
+{%for list in ml %}
+
+{% include "home-inline.html" with i=list.my_list %}
+
+{%endfor%}
+</div>
+
+{% endblock %}

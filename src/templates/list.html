@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+{%block asif%}
+<div class="cont">
+    
+    <img class="poster" src="{{poster}}">
+    <div class="cent">
+<div class="row">
+{% for i in list%}
+
+{% include "list-inline.html" with object=i %}
+
+
+{%endfor%}
+</div>
+</div>
+</div>
+<style>
+.cont {
+  position: relative;
+  color: white;
+}
+.poster{
+    max-width:100%;
+    height: auto;
+    width: 100%;
+    bottom: auto;
+    
+    filter: blur(10px);
+  }
+
+  .cent {
+  
+    position: absolute;
+    
+  top: 8px;
+  left: 30px;
+}
+
+  </style>
+{%endblock%}
