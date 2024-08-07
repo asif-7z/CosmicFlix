@@ -90,16 +90,16 @@ def detail(request,Name):
 
     
     id = None
-    x = os.system('ping facebook.com')
-    if x == 0:
-        im = imdb.search_movie(Name)
-        id = im[0].movieID
-        movie_or_series = imdb.get_movie(id)
-        # rating,votes = movie_or_series.data['rating'],movie_or_series['votes']
-        # print(rating)
-        # print(movie_or_series.data)
-    else:
-        pass
+    # x = os.system('ping facebook.com')
+    # if x == 0:
+    #     im = imdb.search_movie(Name)
+    #     id = im[0].movieID
+    #     movie_or_series = imdb.get_movie(id)
+    #     # rating,votes = movie_or_series.data['rating'],movie_or_series['votes']
+    #     # print(rating)
+    #     # print(movie_or_series.data)
+    # else:
+    #     pass
     url = ''
     for i in obj:
         j = i.video_set.all()[0]

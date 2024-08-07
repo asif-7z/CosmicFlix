@@ -241,19 +241,20 @@ console.log("js loaded");
 // }
 // )
 $('#titl').addClass('newc');
-$('.bck').addClass('bki')
+$('.bck').addClass('bki');
+console.log("hello")
 
 var srn = $('#vh')
 var tit = $('#pl');
 
 
 
-srn.mouseover(function(){
-     $('#pl').addClass('tnt')
+// srn.mouseover(function(){
+//      $('#pl').addClass('tnt')
 
-})
+// })
 
-srn.mouseleave(function(){
-    $('#pl').removeClass('tnt')
-})
+// srn.mouseleave(function(){
+//     $('#pl').removeClass('tnt')
+// })
 

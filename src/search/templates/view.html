@@ -4,12 +4,15 @@
 
 {% if query %}
 <p>you searched {{query}}</p>
+<div class="bki">
+  <br>
 <div class="row">
 {% for items in search %}
 
 
 {% include "home-inline.html" with i=items %}
 {%endfor%}
+</div>
 </div>
 {% else %}
 <h2>Seems like you did not search anything</h2>

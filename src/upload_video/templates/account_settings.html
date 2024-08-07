@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block asif %}
 
-
+<div class="bki">
 <div class="cent">
-<div class="card">
+<div class="card1">
     <div class="card-img">
     </div>
     <p class="text-title">{{user}}</p>
@@ -13,6 +13,7 @@
       
     </div>
 </div>
+</div>
 <style> 
     .cent {
   position: absolute;
@@ -21,13 +22,15 @@
   transform: translate(-50%, -50%);
   padding: 10px;
 }
-.card {
+.card1 {
  width: 600px;
  height: 500px;
  background: transparent;
  overflow: visible;
- box-shadow: 0 5px 20px 2px rgba(49, 92, 200, 0.8);
+ background-image: linear-gradient(to bottom, #5555556e,#17171794);
+ box-shadow: 0 5px 20px 2px rgba(209, 211, 214, 0.8);
  display: flex;
+
  flex-direction: column;
  align-items: center;
  border-radius: 25px;
@@ -36,16 +39,16 @@
 .card-btn{
     border-radius: 20px;
     border: none;
-    color:  #e65af6;
+    color:  #181418b8;
     background-color: transparent;
     margin-top: 5px;
     margin-bottom: 5px;
-    box-shadow:  0 5px 20px 2px rgba(49, 92, 200, 0.5);
+    box-shadow:  0 5px 20px 2px rgba(197, 202, 214, 0.5);
     height: 50px;
     width: 500px;
 }
 .card-btn:hover{
-    background-color: #e81aff;
+    background-color: #0d020e;
     color: white;
 }
 
@@ -56,8 +59,8 @@
  height: var(--size);
  border-radius: 50%;
  transform: translateY(-50%);
- background: #42caff;
- background: linear-gradient(to bottom, #42caff 0%, #e81aff 100%);
+ background:rgb(30, 27, 27);
+ /* background: linear-gradient(to bottom, #42caff 0%, #e81aff 100%); */
  position: relative;
  transition: all .3s ease-in-out;
 }
@@ -67,7 +70,7 @@
 .text-title {
  text-transform: uppercase;
  font-size: 1em;
- color: #42caff;
+ color: #000000;
  letter-spacing: 0.05rem;
 }
 

@@ -1,28 +1,132 @@
 {% extends "base.html" %}
 
 {% block asif %}
-<div class="infocard">
-<label>Username</label>
-<h5>{{profile}}</h5>
-<label>Date Joined</label>
-<h6 style="font-weight: 100;">{{profile.date_joined|date}}</h6>
-<label>Email address</label>
-<h5>{{profile.email}}</h5>
-<label>First name</label>
-<h5>{{profile.first_name}}</h5>
-<label>Last name</label>
-<h5>{{profile.last_name}}</h5>
+
+
+<div class="infocard1">
+  <div class="title">
+    <p class="heading">Account Info</p>
+    <!-- <p class="desc">joined</p> -->
+  </div>
+  <div class="wrapper">
+    <div class="color black">
+      Username
+      <span class="hex">{{profile}}</span>
+    </div>
+   
+    <div class="color chinese-black">
+      Email
+      <span class="hex">{{profile.email}}</span>
+    </div>
+     <div class="color chinese-black">
+      First name
+      <span class="hex">{{profile.first_name}}</span>
+    </div>
+    <div class="color chinese-black">
+      Last name
+      <span class="hex">{{profile.last_name}}</span>
+    </div>
+    <div class="color eerie-black">
+      Joined date
+      <span class="hex">{{profile.date_joined|date}}</span>
+    </div>
+   
+  </div>
+</div>
 </div>
 
 <style>
-    .infocard{
+.infocard1 {
+  width: 500px;
+  height: 450px;
+  margin-left : 35%;
+  border-radius: 25px;
+  background-color:#2e2e2e;
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  font-family: Helvetica, sans-serif;
+}
 
-        height:600px;
-        color: white;
-        text-align: center;
-        border-radius: 30px;
-        background: #212121;
-       
-    }
+.wrapper {
+  margin: 3rem auto;
+  width: 350px;
+  font-size: small;
+}
+
+.title {
+  text-align: center;
+  color: #1b1b1b;
+}
+
+.heading {
+  font-weight: bold;
+  letter-spacing: 7px;
+  font-size: 1.5rem;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 7px;
+  color: #e1e1e1;
+}
+
+.heading::before {
+  content: '';
+  /* position: absolute; */
+  inset: 0;
+  background: #e8e8e8;
+  z-index: -1;
+  filter: blur(50px);
+  height: 50px;
+}
+
+.color {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hex {
+  text-align: start;
+  font-family: monospace;
+  /* text-transform: uppercase; */
+}
+
+.black {
+  background: var(--black);
+  color: var(--ch-white);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.eerie-black {
+  background: var(--ch-black);
+  color: var(--ch-white);
+}
+
+.chinese-black {
+  background: var(--eer-black);
+  color: var(--ch-white);
+}
+
+
+.border {
+  color: var(--night-rider);
+  padding: 20px 20px;
+  text-align: center;
+}
+
+.border span {
+  border-radius: 5px;
+  color: var(--ch-white);
+  padding: 2px 4px;
+  background-color: var(--night-rider);
+}
 </style>
 {%endblock%}
+
+
