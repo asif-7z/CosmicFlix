@@ -50,10 +50,10 @@ def home(request):
     else:
         hist = Watch_History.objects.filter(user=request.user).order_by('-timestamp')[:1]
         if hist:
-            v = hist[0].video_name.video_set.all()
-            last_played = v[0].slug
+            for i in hist:
+                last_played = i.video_name.slug
         else:
-            last_played="no history"
+                last_played="no history"
    
 
     poster = {"poster1":{"p":obj[0].poster.url,"n":obj2[0].Name,"d":obj2[0].detail},
@@ -68,13 +68,30 @@ def home(request):
 def category(request,type):
     template_name = "category.html"
     cat = Series_Name.objects.filter(type=type)
-    context = {"category":cat}
+    genre = Series_Name.objects.all()
+    query = request.GET.get('q',None)
+    all_genre = []
+    for i in genre:
+        all_genre.append(i.genre)
+
+    def remove_duplicates_across_all(genres_list):
+        genre_set = set()
+        for genres in genres_list:
+            genre_set.update([genre.strip().lower() for genre in genres.split(',') if genre.strip()])
+        return sorted(genre_set)
+
+    unique_genres = remove_duplicates_across_all(all_genre)
+
+    v_list = Series_Name.objects.search(query=query)
+    context = {"category":cat,'genre':unique_genres,'g_list':v_list,"type":type}
     return render(request,template_name,context)
 
 @login_required
 def detail(request,Name):
     obj = Series_Name.objects.filter(Name=Name)
     o2 = Series_Name.objects.get(Name__icontains=Name)
+    o2.count_views += 1
+    o2.save()
     try:
         u_list = mylist.objects.get(my_list=o2)
         response = "Added"
@@ -124,8 +141,10 @@ def detail(request,Name):
 def play(request,slug):
     template_name = "play.html"
     vsource = video.objects.get(slug=slug)
+    vsource.view_count += 1
+    vsource.save()
     time = timezone.now()
-    series = vsource.series
+    series = vsource
     watch,created = Watch_History.objects.get_or_create(user=request.user,video_name=series)
     if not created:
         watch.timestamp = time
@@ -135,9 +154,21 @@ def play(request,slug):
     rec = Series_Name.objects.filter(genre__icontains= genre[0]) | Series_Name.objects.filter(genre__icontains= genre[1])
     title = vsource.series.Name
     list = video.objects.filter(slug__icontains=title)
-    context_name  = {"play":vsource,"list":list,"rec":rec}
+    movies = Series_Name.objects.order_by('-count_views')[:10]
+    context_name  = {"play":vsource,"list":list,"rec":rec,'movies': movies}
     return render(request,template_name,context_name)
 
+
+
+@login_required
+def most_watched(request):
+    movies = Series_Name.objects.order_by('-count_views')[:10] # Top 10 most watched    
+    # for i in movies:
+    #     videos = i.video_set.all()
+    #     for j in videos:
+    #         print(j.slug)
+
+    return render(request, 'most_watched.html', {'movies': movies})
 
 @login_required
 def update_series_list(request,Name):
@@ -151,11 +182,12 @@ def update_series_list(request,Name):
     return render(request,template_name,context)
 
 
-def list(request,slug):
+def list_obj(request,slug):
     temp = "list.html"
     # obj = video.objects.filter(slug=slug).series.Name
     # print(obj)
     listEp = video.objects.filter(slug__icontains=slug)
+    print(listEp)
     poster = listEp[0].series.poster.url
     context = {"list":listEp,"poster":poster}
     return render(request,temp,context)
@@ -228,7 +260,7 @@ def delete_user(request):
     context = {"username":userobj}
     return render(request,template_name,context)    
     
-    
+@login_required    
 def settings_view(request):
     template_name = "account_settings.html"
     user = request.user
@@ -236,6 +268,7 @@ def settings_view(request):
     context = {"profile":obj}
     return render(request,template_name,context)
 
+@login_required
 def account_info_view(request):
     template_name = "account-info.html"
     user=request.user

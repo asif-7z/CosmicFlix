@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block asif %}
+<div class="bki-panel">
+{% for i in genre %}
+<form class="d-flex" role="search" action="/genre/">
+    <button class="btn btn-outline-success" name="q" value="{{i}}" type="submit" style="text-transform: capitalize;">{{i}}</button>
+  </form>
+{%endfor%}
+</div>
+<br>
+<br>
+
+<div class="bki">
+    <br>
+  <div class="row">
+    <h3 style="text-align: center; text-transform: uppercase;">{{q_type}}</h3>
+    <br>
+    <br>
+  {% for items in g_list %}
+  
+  
+  {% include "home-inline.html" with i=items %}
+  {%endfor%}
+  </div>
+  </div>
+
+  {%endblock%}

@@ -2,20 +2,34 @@
 {% block asif %}
 <div class="bki">
     <br>
+    <h2 style="text-align: center;">Watch History :</h2>
+    <br>
 <div class="row">
+
+{% if history %}
 {% for h in history %}
 
-{% include "home-inline.html" with i=h.video_name %}
+{% include "list-inline.html" with object=h.video_name %}
 
 {%endfor%}
 </div>
-<form method="post" action="."  onclick="javascript:alert('Clear History')">{% csrf_token %}
+<form style="text-align: center;" method="post" action="."  onclick="javascript:alert('History Cleard')">{% csrf_token %}
     <button class="btn btn-danger"  type="submit">Clear History</button>
 
 </form>
 <br>
 </div>
+{%else%}
 
+<h1 style="text-align: center;">No History Found...!</h1>
 
-
+{%endif%}
+<div class="space"></div>
+<style>
+  /* Add this if you need custom spacing */
+  .space {
+      padding-top: 30%; /* Adjust according to your navbar's height */
+  }
+</style>
 {%endblock%}
+

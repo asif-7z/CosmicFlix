@@ -7,10 +7,12 @@
 .bki
 {
     /* background-image: url("/static/media/images/background.jpg"); */
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(12, 12, 12);
     background-repeat:no-repeat;
     border-radius: 25px;
     color: white;
+    margin-left: 20px;
+    margin-right: 20px;
     
 
 }
@@ -44,10 +46,11 @@
 } */
 
 .login-form {
-    max-width: 320px;
+    max-width: 420px;
     width: 200%;
     background-color: #fff;
     padding: 20px;
+    margin-left: 550px;
     box-shadow: 0px 0px 0px 4px rgba(52, 52, 53, 0.185);
     display: flex;
     flex-direction: column;
@@ -56,6 +59,7 @@
   
   .ftitle {
     text-align: center;
+    font-weight: bold;
     font-size: 2rem;
     margin-bottom: 20px;
     color: #1a202c;
@@ -109,3 +113,223 @@
     margin-left: 1000px;
     margin-top: -415px;
   }
+
+  .vertical-line {
+    border-left: 2px solid rgb(113, 113, 113); /* Creates the vertical line */
+    height: auto;               /* Adjust the height of the line */
+    margin: 0 20px;              /* Optional: space around the line */
+  }
+
+
+  .bki-panel {
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;             /* Aligns buttons horizontally */
+    justify-content: center;    /* Centers the buttons horizontally */
+    gap: 10px;                  /* Adds spacing between buttons */
+    background-color: #000000;  /* Light background color for the panel */
+    padding: 20px;              /* Padding around the panel */
+    border-radius: 10px;        /* Rounded corners for the panel */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Optional: add a subtle shadow */
+    }
+    
+    .d-flex {
+    margin: 0;                  /* Removes margin between forms */
+    }
+    
+    .btn {
+    margin: 0;                  /* Ensures no extra margin around buttons */
+    }
+
+    .scroll-container {
+
+      width: 550px;  /* Width of the visible area */
+      height: 300px; /* Height of the visible area */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding: 10px;
+    }
+
+    /* List items */
+    .scroll-item {
+      padding: 10px;
+      background-color: rgb(150, 144, 144);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+
+  /* Basic styling for list and content */
+
+  .item-list{
+    margin-left: 3%;
+  }
+.item-list ul {
+list-style-type: none;
+padding: 0;
+}
+
+.item-list li {
+padding: 15px;
+margin: 5px 0;
+background-color: #060606;
+cursor: pointer;
+text-align: center;
+}
+
+.item-list li.active {
+background-color: #ffffff;
+color: #4b4b4b;
+}
+
+.item-list li:hover{
+  background-color: #1f1d1d;
+  color: rgb(243, 243, 243);
+  border-radius: 25px;
+}
+
+/* Styling for anchor tags */
+.item-list li a {
+text-decoration: none;
+color: inherit;
+display: block;
+width: 100%;
+}
+
+.content-display {
+display: none; /* Hides the content unless needed */
+}
+
+/* Optional hidden class */
+.hidden {
+display: none;
+}
+
+
+
+
+.card-link {
+  text-decoration: none; /* Remove the default underline for the link */
+  color: inherit; /* Ensure the link inherits the card's text color */
+  display: block; /* Makes the entire card clickable */
+}
+
+
+.m_card {
+  width: 180px;
+  height: 230px;
+  padding: 30px;
+  background: #1c1b1b;
+  position: relative; /* Ensure this is relative for absolute positioning inside */
+  overflow: visible;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.m_card-img {
+  height: 40%;
+  width: 100%;
+  border-radius: .5rem;
+  transition: .3s ease;
+}
+
+.play-btn {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;  /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  cursor: pointer;
+  visibility:collapse;
+}
+
+.m_card-info {
+  padding-top: 10%;
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+}
+
+.m_card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+/*Text*/
+.m_text-title {
+  font-weight: 900;
+  font-size: 1em;
+  line-height: 1.1;
+  color: aliceblue;
+}
+
+.m_text-body {
+  font-size: .8em;
+  padding-bottom: 10px;
+  color: white;
+}
+
+/*Button*/
+.m_card-button {
+  border: 1px solid #252525;
+  display: flex;
+  padding: .3em;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: .3s ease-in-out;
+}
+
+/*Hover*/
+.m_card:hover > .m_card-img{
+  filter: blur(1px);
+  transform: scale(1.1);
+
+}
+.m_card:hover > .play-btn{
+  visibility: visible;
+}
+
+.m_card-button:hover {
+  border: 1px solid #000000;
+  background-color: #000000;
+}
+
+
+
+    .scroll-container {
+
+      width: 550px;  /* Width of the visible area */
+      height: 300px; /* Height of the visible area */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding: 10px;
+    }
+
+    /* List items */
+    .scroll-item {
+      padding: 10px;
+      background-color: rgb(150, 144, 144);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    /* Scrollbar Track */
+::-webkit-scrollbar {
+  width: 10px;             /* Width of the scrollbar */
+}
+
+/* Scrollbar Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #363636;   /* Color of the scrollbar handle */
+  border-radius: 10px;         /* Round the handle */
+  border: 2px solid #ffffff;   /* Optional: Add a border */
+}
+
+/* Scrollbar Track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;   /* Background color of the track */
+}

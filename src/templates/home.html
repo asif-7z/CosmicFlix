@@ -32,13 +32,17 @@
       </button>
     </div>
     </div>
+    <div class="vertical-line"></div>
+    <br>
+    <br>
+    
     <div class="hel">
       {% for h in hist %}
-      {% include "home-inline.html" with i=h.video_name %}
+      {% include "home-inline.html" with i=h.video_name.series %}
       {%endfor%}
       {% if user.is_active %}
           {% if lst_p == "no history" %}
-            <h1>Welcome {{user.first_name}}</h1>
+            <h1 style="text-transform: capitalize;">Welcome {{user.first_name}}</h1>
           {% else %}
             <a href="/play/{{lst_p}}"><button class="hist">Continue watching. . .</button></a>
             <a href="/history/"><button class="hist">History</button></a>

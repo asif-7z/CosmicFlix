@@ -51,12 +51,13 @@ class Series_nameManager(models.Manager):
 
 
 class Series_Name(models.Model):
-    Name = models.CharField(max_length=50,null=True)
+    Name = models.CharField(max_length=200,null=True)
     poster = models.ImageField(upload_to='images/',null=True)
     genre = models.CharField(max_length=30,null=True)
     type = models.CharField(null=False,max_length=10)
     detail = models.TextField(null=True,max_length=1000)
     time_stamp = models.DateTimeField(auto_now_add=True)
+    count_views = models.IntegerField(default=0,null=True)
 
     objects = Series_nameManager()
 
@@ -66,6 +67,8 @@ class Series_Name(models.Model):
     class Meta:
         ordering = ['-time_stamp']
     
+    def __str__(self):
+        return self.Name
     
     
     
@@ -79,6 +82,7 @@ class video(models.Model):
     file = models.FileField(upload_to='video/',null=False)
     image = models.ImageField(upload_to='images/',null=False)
     content = models.TextField(null=False)
+    view_count = models.IntegerField(default=0,null=True)
 
     # objects = VideoManager()
 
@@ -96,5 +100,8 @@ class video(models.Model):
     
     def upload_url():
         return "/upload/"
+
+    def __str__(self):
+        return self.title+' - '+self.series.Name
     
 

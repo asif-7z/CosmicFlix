@@ -12,6 +12,7 @@
 <div class="card bg-dark text-white">
     <img class="card-img" src="{{i.poster.url}}" alt="Card image">
     <div class="card-img-overlay">
+      <div style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7)">
       <h5 class="card-title">{{i.Name}}</h5>
       <p class="card-text">{{i.detail}}</p>
       <p class="card-text">{{i.time_stamp}}</p>
@@ -19,9 +20,10 @@
       <h4>Votes :{{votes}}</h4> -->
       
       <p><h4>Genre:</h4> {{i.genre}}</p>
+    </div>
       <a href="https://www.imdb.com/title/tt{{linkid}}/"><button class="btn btn-warning">IMDB</button></a>
 
-      
+    
 
       {% if i.type == "movie" %}
       <a href="/play/{{url}}/"><button type="button" class="btn btn-warning">Watch Now</button></a>

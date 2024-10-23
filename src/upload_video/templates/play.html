@@ -4,75 +4,247 @@
 <div class="bck">
 <div id="vh"  class="vcont">
 <div class="row">
-    <video style="border-radius: 25px; border: none; margin-top: 2%;margin-bottom: 2%;margin-left: 2%; height:auto; width: 60%;"
+  <div class="item-li">
+    <video style="border-radius: 25px; border: none; margin-top: 2%;margin-bottom: 2%;margin-left: 2%; height:auto; width: 50%;"
       width="200px" height="align-top"  autoplay="autoplay" controls="controls" preload="preload">
     <source src="{{play.file.url}}" type="video/mp4"></source>
     </video>
+    <div class="vertical-line"></div>
+    {% if play.series.type == "series" %}
+    <!-- <div class="container"> -->
+      <!-- List of items -->
+      <div class="item-list">
+        <ul id="item-list">
+
+          
+          <h2 id="li-s">Episodes :</h2>
+          <div class="scroll-container">
+        {% for i in list %}
+        
+        
+        
+         <!-- {% include "list-inline.html"  with object=i  %} -->
+
+        
+          <li class="scroll-item"><a href="/play/{{i.slug}}" class="li-title">{{i.title}}</a></li>
+          {% endfor%}
+          </div>
+        </ul>
+
+      </div>
+      <!-- </div> -->
+      
+      
+      {% endif %}
+    
+    </div>
 </div>
 <div id="pl">
   <h1>{{play.title}}</h1>
 </div>
-<div class="hel"><h1>
-</h1>
-<!-- <div class="card border-succes mb-3">
+</div>
+<hr class="solid">
+<div class="card border-dark mb-3">
   <div class="card-body">
-    <h5 class="card-title">{{play.title}}</h5>
+    {% if play.series.type == "series" %}
+    <h5 class="card-title">{{play.series.Name}} : {{play.title}}</h5>
+    {%else%}
+    <h5 class="card-title">{{play.series.Name}}</h5>
+    {%endif%}
     <p class="card-text">{{play.content}}</p>
-    <p class="card-text"><small class="text-muted"></small></p>
-  </div>
-</div> -->
-</div>
-</div>
-</div>
-
-
-
-
-<div class="card border-succes mb-3">
-  <div class="card-body">
-    <h5 class="card-title">{{play.title}}</h5>
-    <p class="card-text">{{play.content}}</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <p class="card-text"><small class="text-muted">{{play.time_stamp}}</small></p>
   </div>
 </div>
+</div>
+<script>
+  document.querySelectorAll('.item-list li a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+      // Remove 'active' class from all items
+      document.querySelectorAll('.item-list li').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Add 'active' class to the clicked item
+      this.parentElement.classList.add('active');
+
+     
+    });
+  });
+
+  function compareInnerHTMLByClass(class1, class2) {
+    // Get the elements by class name (assuming the first element of each class)
+    const element1 = document.getElementsByClassName(class1)[0];
+    const element2 = document.getElementsByClassName(class2)[0];
+
+    const content1 = element1.innerHTML;
+    const content2 = element2.innerHTML;
+
+    console.log(content1,content2)
+
+    // Check if both elements exist
+    if (!element1 || !element2) {
+        console.error('One or both elements not found.');
+        return false;
+    }
+
+    // Get the innerHTML of both elements
+    // const content1 = element1.innerHTML;
+    // const content2 = element2.innerHTML;
+
+    console.log(content1,content2)
+
+    // Compare the innerHTML of both elements
+    return "hello and bye"
+}
+  
+console.log(compareInnerHTMLByClass('card-title', 'li-title')); // true
+// console.log(compareInnerHTMLByClass('div1', 'div3')); // false
+</script>
+
+
+
 {% if user.is_superuser %}
-<button type="button"><a href="{{play.edit_url}}">edit</a></button>
-<button type="button"><a href="{{play.delete_url}}">delete</a></button>
-{%endif%}
+<button class="btn btn-outline-secondary" type="button"><a href="{{play.edit_url}}">edit</a></button>
+<button type="button" class="btn btn-outline-danger"><a href="{{play.delete_url}}">delete</a></button>
+{% endif %}
 
 {%endif%}
 
 
 
-<div class="row">
+<!-- <div class="row">
   {% if play.series.type == "series" %}
   <h1 id="li-s">list :</h1>
 {% for i in list %}
+
 
 
  {% include "list-inline.html"  with object=i  %}
 
 {% endfor%}
 {% endif %}
-</div>
+</div> -->
 <hr class="solid">
-<div class="bck">
-<h3>More like this :</h3>
+<div class="sec-container">
+  <div class="bck">
+      <h3 style="text-align: center; color: gray;">More like this :</h3>
+      <div class="row">
+          {% for r in rec %}
+              {% include "home-inline.html" with i=r %}
+          {% endfor %}
+      </div>
+  </div>
+  
+  <div class="m_container">
+      <h3>Most Watched:</h3>
+      <div id="most-watched-items">
+          {% for m_list in movies %}
+              <div class="most-watched-item">
+                  {% include "most_watched.html" with movie=m_list %}
+              </div>
+          {% endfor %}
+      </div>
+      <button id="show-more-btn" onclick="showAllItems()">Show More</button>
+  </div>
+</div>
 
-<div class="row">
-{% for r in rec %}
-{% include "home-inline.html" with i=r %}
-{%endfor%}
-</div>
-</div>
+
+
+
+
+
+
+
+<style>
+
+
+
+.sec-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between elements */
+    align-items: flex-start; /* Align items to the top */
+    padding: 10px;
+}
+
+.sec_container > .bck {
+    width: 80%; /* Adjust width for "More like this" section */
+}
+
+.m_container {
+    width: 20%; /* Adjust width for "Most Watched" */
+    background-color: #000000; /* Optional background to distinguish section */
+    padding: 20px;
+    color: gray;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    border-radius: 25px;
+    margin-left: 10px;
+
+}
+
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Ensure content wraps properly */
+}
+
+.most-watched-item {
+    display: none; /* Initially hide all items */
+}
+
+.most-watched-item.visible {
+    display: block; /* Show the visible items */
+}
+
+/* Show only the first 3 items initially */
+.m_container #most-watched-items .most-watched-item:nth-child(-n+1) {
+    display: block;
+}
+
+#show-more-btn {
+    margin-top: 10px;
+    margin-bottom: 35px;
+    border-radius: 25px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color:yellow;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+#show-more-btn:hover {
+    background-color: #050505;
+    color: gray;
+}
+
+
+</style>
+
+<script>
+  function showAllItems() {
+      const items = document.querySelectorAll('.most-watched-item');
+      items.forEach(item => {
+          item.classList.add('visible'); // Make all items visible
+      });
+      
+      // Optionally, hide the button after showing all items
+      document.getElementById('show-more-btn').style.display = 'none';
+  }
+  </script>
+  
 <hr class="solid">
 
     <style>
-    .hr.solid {
-      border-top: 8px solid #bbb;
-       border-radius: 5px;
+    .solid {
+      border-top: 3px solid #fdfdfd;
+       /* border-radius: 5px; */
     }
-    </style>
+    .item-li{
+      display: flex;
+    }
+  </style>
 
 
 <div class="col-6 col-md-5  mb-2 mx-auto">
@@ -114,9 +286,7 @@
   </form>
   </div>
     </div></div></div>
-    <hr class="solid">
    
-
 {%endblock%}
 
 

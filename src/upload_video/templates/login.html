@@ -3,13 +3,23 @@
 {% block asif %}
 <br>
 <br>
-<div class="col-6 col-md-2  mb-2 mx-auto">
-  <div class="row">
+<!-- <div class="col-6 col-md-2  mb-2 mx-auto">
+  <div class="row"> -->
 <form class="login-form" method="post">{% csrf_token %}
+  <span class="ftitle">Log in</span>
     {{login.as_p}}
-    <button type="submit" class="fsubmit">Login</button>
-    <a href="/Register/">Register</a>
+    <button type="submit" class="fsubmit">Log in</button>
+    <br>
+    <small><a href="/Register/" style="text-decoration: none;">Register</a></small>
   </form>
-  </div></div>
+  <!-- </div></div> -->
+
+  <div class="content"></div>
+  <style>
+    /* Add this if you need custom spacing */
+    .content {
+        padding-top: 80px; /* Adjust according to your navbar's height */
+    }
+</style>
 
 {%endblock%}

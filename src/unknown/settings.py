@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'upload_video','search','mylist','watchhistory',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

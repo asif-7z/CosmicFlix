@@ -3,8 +3,11 @@
 {% block asif %}
 <div class="bki">
 <br>
-<div class="row">
 
+<div class="row">
+    <h2 style="text-align: center;">My list:</h2>
+    <br>
+    <br>
 {%for list in ml %}
 
 {% include "home-inline.html" with i=list.my_list %}

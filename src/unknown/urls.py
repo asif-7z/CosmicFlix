@@ -15,16 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from search.views import searchquery
+from django.urls import path,include
+from search.views import searchquery,genre
 from mylist.views import my_list_view
 from watchhistory.views import watch_history_view
 from django.conf.urls.static import static
 from django.conf import settings
-from upload_video.views import (upload_video,play,list,edit,delete,
+from upload_video.views import (upload_video,play,list_obj,edit,delete,
                                 register,home,update_series_list,detail,
                                 category,login_view,user_logout,ChangePasswordView,delete_user,
-                                settings_view,account_info_view,
+                                settings_view,account_info_view,most_watched
                                 
                                 )
 
@@ -35,13 +35,15 @@ urlpatterns = [
     path('mylist/',my_list_view),
     path('history/',watch_history_view),
     path('upload/',upload_video),
-    path('<str:slug>/detail/episodes/',list),
+    path('<str:slug>/detail/episodes/',list_obj),
     path('play/<str:slug>/edit/',edit),
     path('play/<str:slug>/delete/',delete),
     path('play/<str:slug>/',play),
+    path('most_watched/',most_watched),
     path('<str:Name>/detail/',detail),
     path('<str:Name>/update/',update_series_list),
     path('search/',searchquery),
+    path('genre/',genre),
     path('Register/',register),
     path('login/',login_view,name='login'),
     path('logout/',user_logout,name='logout'),
@@ -49,5 +51,6 @@ urlpatterns = [
     path('settings/account-info/',account_info_view),
     path('settings/change-password/', ChangePasswordView.as_view(), name='change_password'),
     path('settings/delete_user/',delete_user),
+    path('api/',include('upload_video.api.urls'))
     
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

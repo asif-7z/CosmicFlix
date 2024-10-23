@@ -1,6 +1,6 @@
 <div class="col-8 col-md-auto  mb-4 mx-auto">
-<div class="pop">
-    <div class="card" style="width: 18rem;">
+<div>
+    <div class="card" id="list_card" style="width: 18rem;">
       <a href="/{{i.detail_url}}"><img class="card-img-top" src="{{i.poster.url}}" alt="Card image cap"></a>
       <div class="pit">
         <h3>{{i.Name}}</h3>
@@ -37,17 +37,19 @@
         visibility:collapse;
         text-align: center;
       }
-      .card:hover{
+      #list_card:hover{
         background-color: transparent;
         padding: 5px;
       }
-    .card:hover > .pit
+    #list_card:hover > .pit
       {
         
         visibility: visible;
         
       }
-    </style>
+
+   
+</style>
 
   
     
